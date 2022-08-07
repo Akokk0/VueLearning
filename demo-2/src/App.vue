@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <h1>App 根组件</h1>
+    <h1 v-color="'pink'">App 根组件</h1>
+    <p v-color="color">测试</p>
+    <button @click="color = 'lightpink'"></button>
     <hr />
 
     <Article>
@@ -41,6 +43,34 @@ export default {
   components: {
     Left,
     Article
+  },
+  data() {
+    return {
+      color: 'blue'
+    }
+  },
+  directives: {
+    //定义名为color的指令，指向一个配置对象
+    /*color: {
+      //当指令第一次被绑定到元素对象的时候，会立即触发bind函数
+      //形参中的el表示当前指令所绑定到的那个DOM对象
+      /!*bind(el, {value}) {
+        console.log('调用了bind函数')
+        if (value === undefined) return el.style.color = 'red'
+        el.style.color = value
+      },
+      update(el, {value}) {
+        console.log('调用了update函数')
+        if (value === undefined) return el.style.color = 'red'
+        el.style.color = value
+      }*!/
+    }*/
+    //bind函数和update函数的简写形式
+    color(el, {value}) {
+      console.log('调用了bind函数和update函数的简写形式')
+      if (value === undefined) return el.style.color = 'red'
+      el.style.color = value
+    }
   }
 }
 </script>
