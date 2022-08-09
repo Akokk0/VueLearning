@@ -1,25 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Home from '@/views/Home/Home'
+import User from '@/views/User/User'
 
+// 把 VueRouter 安装为 Vue 的插件
 Vue.use(VueRouter)
 
+// 这是路由规则的数组
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  { path: '/', component: Home },
+  { path: '/user', component: User }
 ]
 
+// 创建路由实例对象
 const router = new VueRouter({
   routes
 })
